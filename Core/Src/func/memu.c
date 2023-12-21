@@ -6,7 +6,6 @@ void memu(_32bit *chessman)
     int i = 0, ch;
     while (1)
     {
-        B:
         system("clear");
         switch (i){
         case 0:
@@ -60,6 +59,7 @@ void memu(_32bit *chessman)
             printf("|                           |\n");
             break;
         }
+        B:
         ch = getch();
         switch (ch){
         case 'w': if (i == 0) i = 4; else i--;break;
@@ -85,7 +85,6 @@ void memu(_32bit *chessman)
     }
     else {
         printf("file don't exist!\n");
-        getch();
         goto B;
     }
     case 3: save(chessman);
