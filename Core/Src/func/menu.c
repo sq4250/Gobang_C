@@ -1,6 +1,6 @@
 #include "Inc.h"
 
-void memu(_32bit *chessman)
+void menu(_32bit *chessman)
 {
     printf("\033[?25l");
     int i = 0, ch;

@@ -54,7 +54,7 @@ void icon(_32bit *chessman){
                     goto A;
                 }
                 else break;
-            case '\x1b': memu(chessman);
+            case '\x1b': menu(chessman);
                 goto A;
             case '`': save(chessman);
                 break;
