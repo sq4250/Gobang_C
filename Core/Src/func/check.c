@@ -46,9 +46,10 @@ int checkchess(_32bit *a, int c){
     for (int i = 0; i < 4; i++)
         for (int j = 0; j < 16; j++)
             for (int k = 0; k < 16; k++)
-                if (p[i][j][k] == 5)
+                if (p[i][j][k] == 5){
+                    free(p);
                     return c;
-    
+                }
     free(p);
     return 0;
 }
