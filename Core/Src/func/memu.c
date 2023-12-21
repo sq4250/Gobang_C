@@ -90,7 +90,7 @@ void memu(_32bit *chessman)
     }
     case 3: save(chessman);
         break;
-    case 4:
+    case 4: free(chessman);
         exit(0);
     }
 }

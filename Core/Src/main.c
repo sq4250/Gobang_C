@@ -8,6 +8,5 @@ int main(){
     printf("\n>>> press any key...");
     getch();
     } while (1);
-    free(chessman);
     return 0;
 }
