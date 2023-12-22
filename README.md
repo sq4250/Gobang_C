@@ -1,4 +1,5 @@
-# Gobang by BUGKNIFEDOGE
+# Gobang by BUGKNIFEDOGE 
+### (just for Linux)
 
 1. Open "Terminal"
 2. Type "make" to Compile & Link
