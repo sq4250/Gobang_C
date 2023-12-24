@@ -50,7 +50,7 @@ int check(_32bit *chessman){
         printf("\n");
         printf("|          Winner:          |\n");
         printf("|                           |\n");    
-        printf("|           White           |\n");
+        printf("|             ●             |\n");
         printf("|                           |\n");
         printf("|                           |\n");
         return 1;
@@ -59,7 +59,7 @@ int check(_32bit *chessman){
         printf("\n\n");
         printf("|          Winner:          |\n");
         printf("|                           |\n");
-        printf("|           Black           |\n");
+        printf("|             ○             |\n");
         printf("|                           |\n");
         printf("|                           |\n");
         return 2;
