@@ -16,29 +16,29 @@ void evaluate(NODE *node);
 void cut();
 void update();
 void search(NODE *node){
-    // NODE *sibling = (NODE *)malloc(sizeof(NODE)), *head = sibling;
-    // for (int i = 0; i < 15; i++)
-    //     for (int j = 0; j < 15; j++)
-    //         if (((node->chessman[i] & (0xC0000000 >> (j * 2))) >> (30 - j * 2)) != 0)
-    //             for (int ii = area(i - AREA); ii <= area(i + AREA); i++)
-    //                 for (int jj = area(j - AREA); jj <= area(j + AREA); j++)
-    //                     if (((node->chessman[ii] & (0xC0000000 >> (jj * 2))) >> (30 - jj * 2)) == 0){
-    //                         sibling->sibling = (NODE *)malloc(sizeof(NODE));
-    //                         sibling = sibling->sibling;
-    //                         sibling->depth = node->depth + 1;
-    //                         sibling->i = ii;
-    //                         sibling->j = jj;
-    //                         sibling->child = NULL;
-    //                         for (int i = 0; i < 15; i++)
-    //                             sibling->chessman[i] = node->chessman[i];
-    //                         if (sibling->depth % 2 == 0)
-    //                             sibling->chessman[ii] |= (0x40000000 >> (jj * 2));
-    //                         else if (sibling->depth % 2 == 1)
-    //                             sibling->chessman[ii] |= (0x80000000 >> (jj * 2));
-    //                     }
-    // sibling->sibling = NULL;
-    // node->child = head->sibling;
-    // free(head);
+    NODE *sibling = (NODE *)malloc(sizeof(NODE)), *head = sibling;
+    for (int i = 0; i < 15; i++)
+        for (int j = 0; j < 15; j++)
+            if (((node->chessman[i] & (0xC0000000 >> (j * 2))) >> (30 - j * 2)) != 0)
+                for (int ii = area(i - AREA); ii <= area(i + AREA); ii++)
+                    for (int jj = area(j - AREA); jj <= area(j + AREA); jj++)
+                        if (((node->chessman[ii] & (0xC0000000 >> (jj * 2))) >> (30 - jj * 2)) == 0){
+                            sibling->sibling = (NODE *)malloc(sizeof(NODE));
+                            sibling = sibling->sibling;
+                            sibling->depth = node->depth + 1;
+                            sibling->i = ii;
+                            sibling->j = jj;
+                            sibling->child = NULL;
+                            for (int i = 0; i < 15; i++)
+                                sibling->chessman[i] = node->chessman[i];
+                            if ((sibling->depth) % 2 == 0)
+                                sibling->chessman[ii] |= (0x40000000 >> (jj * 2));
+                            else if ((sibling->depth) % 2 == 1)
+                                sibling->chessman[ii] |= (0x80000000 >> (jj * 2));
+                        }
+    sibling->sibling = NULL;
+    node->child = head->sibling;
+    free(head);
 }
 void NLR(NODE *node, int i){
     if (node == NULL) return;
