@@ -1,9 +1,7 @@
-# Gobang by BUGKNIFEDOGE 
-### (only for Linux)
+# Gobang by BUGKNIFEDOGE
 
-1. Open "Terminal"
-2. Type "make" to Compile & Link
-3. Type "make run" to run the Gobang
-4. Type " ` " to save and "esc" to open the menu when playing
+1. Type `~` to save and `ESC` to open the menu when playing;
+2. Type `A` `W` `S` `D` to move the cursor;
+3. Type `I` to open/close the AI program.
 
 ### Have a good day!
