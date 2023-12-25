@@ -134,7 +134,7 @@ int add(NODE *node){
 
 
 void search(NODE *node){
-    char (*a)[15] = (char (*))calloc(15, 15);
+    char (*a)[15] = (char (*)[15])calloc(15, 15);
     NODE *sibling = (NODE *)malloc(sizeof(NODE)), *head = sibling;
     for (int i = 0; i < 15; i++)
         for (int j = 0; j < 15; j++)
