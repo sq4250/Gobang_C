@@ -1,6 +1,6 @@
 #include "Inc.h"
 #define DEPTH 2
-#define AREA 2
+#define AREA 1
 typedef struct NODE{
     int i, sup, inf, depth;
     _32bit chessman[15];
