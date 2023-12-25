@@ -1,6 +1,6 @@
 #include "Inc.h"
 #define DEPTH 2
-#define AREA 1
+#define AREA 2
 typedef struct NODE{
     int i, sup, inf, depth;
     _32bit chessman[15];
@@ -46,9 +46,9 @@ int score(int a){
         case 0x2A2:
         case 0x28A:
         case 0x22A:
-            return 10000;
+            return 1000;
         case 0x2AA:
-            return 1000000;
+            return 10000;
         case 0x100:
         case 0x40:
         case 0x10:
@@ -67,7 +67,7 @@ int score(int a){
         case 0x140:
             return -10;
         case 0x54:
-            return -2000;
+            return -200;
         case 0x114:
         case 0x144:
         case 0x150:
@@ -77,24 +77,29 @@ int score(int a){
         case 0x45:
         case 0x105:
         case 0x15:
-            return -1000;
+            return -100;
         case 0x154:
         case 0x55:
         case 0x151:
         case 0x145:
         case 0x115:
-            return -100000;
+            return -1000;
         case 0x155:
-            return -10000000;
+            return -10000;
         default :
             return 0; 
     }
 }
 int add(NODE *node){
-    int s, m = 0, a = 0xC0000000, b = 0xF8000000;
+    int m = 0;
+    _32bit a = 0xC0000000, b = 0x3FF00000, s;
     for (int i = 0; i < 11; i++)
         for (int j = 0; j < 15; j++){
-            s = ((node->chessman[i] & (a >> j * 2)) >> (30 - j * 2 -8)) + ((node->chessman[i + 1] & (a >> j * 2)) >> (30 - j * 2 -6)) + ((node->chessman[i + 2] & (a >> j * 2)) >> (30 - j * 2 -4)) + ((node->chessman[i + 3] & (a >> j * 2)) >> (30 - j * 2 -2)) + ((node->chessman[i + 4] & (a >> j * 2)) >> (30 - j * 2));
+            s =   (((node->chessman[i + 0] & (a >> j * 2)) >> (30 - j * 2)) << 8)
+                + (((node->chessman[i + 1] & (a >> j * 2)) >> (30 - j * 2)) << 6)
+                + (((node->chessman[i + 2] & (a >> j * 2)) >> (30 - j * 2)) << 4)
+                + (((node->chessman[i + 3] & (a >> j * 2)) >> (30 - j * 2)) << 2)
+                + (((node->chessman[i + 4] & (a >> j * 2)) >> (30 - j * 2)) << 0);
             m += score(s);
         }
     
@@ -106,13 +111,21 @@ int add(NODE *node){
 
     for (int i = 0; i < 11; i++)
         for (int j = 0; j < 11; j++){
-            s = ((node->chessman[i] & (a >> j * 2)) >> (30 - j * 2 -8)) + ((node->chessman[i + 1] & (a >> j * 2 +2)) >> (30 - j * 2 -6 -2)) + ((node->chessman[i + 2] & (a >> j * 2 +4)) >> (30 - j * 2 -4 -4)) + ((node->chessman[i + 3] & (a >> j * 2 +6)) >> (30 - j * 2 -2 -6)) + ((node->chessman[i + 4] & (a >> j * 2 +8)) >> (30 - j * 2 -8));
+            s =   (((node->chessman[i + 0] & (a >> j * 2 + 0)) >> (30 - j * 2 - 0)) << 8)
+                + (((node->chessman[i + 1] & (a >> j * 2 + 2)) >> (30 - j * 2 - 2)) << 6)
+                + (((node->chessman[i + 2] & (a >> j * 2 + 4)) >> (30 - j * 2 - 4)) << 4)
+                + (((node->chessman[i + 3] & (a >> j * 2 + 6)) >> (30 - j * 2 - 6)) << 2)
+                + (((node->chessman[i + 4] & (a >> j * 2 + 8)) >> (30 - j * 2 - 8)) << 0);
             m += score(s);
         }
 
-    for (int i = 10; i >= 0; i--)
+    for (int i = 0; i < 11; i++)
         for (int j = 0; j < 11; j++){
-            s = ((node->chessman[i] & (a >> j * 2 + 8)) >> (30 - j * 2 -8 -8)) + ((node->chessman[i + 1] & (a >> j * 2 +6)) >> (30 - j * 2 -6 -6)) + ((node->chessman[i + 2] & (a >> j * 2 +4)) >> (30 - j * 2 -4 -4)) + ((node->chessman[i + 3] & (a >> j * 2 +2)) >> (30 - j * 2 -2 -2)) + ((node->chessman[i + 4] & (a >> j * 2)) >> (30 - j * 2));
+            s =   (((node->chessman[i + 0] & (a >> j * 2 + 8)) >> (30 - j * 2 - 8)) << 8)
+                + (((node->chessman[i + 1] & (a >> j * 2 + 6)) >> (30 - j * 2 - 6)) << 6)
+                + (((node->chessman[i + 2] & (a >> j * 2 + 4)) >> (30 - j * 2 - 4)) << 4)
+                + (((node->chessman[i + 3] & (a >> j * 2 + 2)) >> (30 - j * 2 - 2)) << 2)
+                + (((node->chessman[i + 4] & (a >> j * 2 + 0)) >> (30 - j * 2 - 0)) << 0);
             m += score(s);
         }
     
