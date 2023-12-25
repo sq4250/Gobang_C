@@ -134,13 +134,14 @@ int add(NODE *node){
 
 
 void search(NODE *node){
+    char (*a)[15] = (char (*))calloc(15, 15);
     NODE *sibling = (NODE *)malloc(sizeof(NODE)), *head = sibling;
     for (int i = 0; i < 15; i++)
         for (int j = 0; j < 15; j++)
             if (((node->chessman[i] & (0xC0000000 >> j * 2)) >> (30 - j * 2)) != 0)
                 for (int ii = area(i - AREA); ii <= area(i + AREA); ii++)
                     for (int jj = area(j - AREA); jj <= area(j + AREA); jj++)
-                        if (((node->chessman[ii] & (0xC0000000 >> (jj * 2))) >> (30 - jj * 2)) == 0){
+                        if (((node->chessman[ii] & (0xC0000000 >> (jj * 2))) >> (30 - jj * 2)) == 0 && a[ii][jj] == 0){
                             sibling->sibling = (NODE *)malloc(sizeof(NODE));
                             sibling = sibling->sibling;
                             sibling->depth = node->depth + 1;
@@ -152,10 +153,12 @@ void search(NODE *node){
                                 sibling->chessman[ii] |= (0x40000000 >> (jj * 2));
                             else if (sibling->depth % 2 == 1)
                                 sibling->chessman[ii] |= (0x80000000 >> (jj * 2));
+                            a[ii][jj] = 1;
                         }
     sibling->sibling = NULL;
     node->child = head->sibling;
     free(head);
+    free(a);
 }
 void nodes(NODE *node, int depth){
     if (node != NULL){
