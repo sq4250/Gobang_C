@@ -1,5 +1,5 @@
 #include "Inc.h"
-#define DEPTH 2
+#define DEPTH 3
 #define AREA 1
 typedef struct NODE{
     int i, sup, inf, depth;
