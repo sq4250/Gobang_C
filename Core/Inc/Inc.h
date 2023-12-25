@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef unsigned short _16bit;
 typedef unsigned int _32bit;
 int getch(void);
 int kbhit(void);
