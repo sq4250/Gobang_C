@@ -162,7 +162,8 @@ void nodes(NODE *node, int depth){
         if (node->depth == depth)
             search(node);
         nodes(node->sibling, depth);
-        nodes(node->child, depth);
+        if (node->depth < depth)
+            nodes(node->child, depth);
     } 
 }
 void parent(NODE *node){
