@@ -85,7 +85,7 @@ int score(int a){
         case 0x115:
             return -1000;
         case 0x155:
-            return -10000;
+            return -100000;
         default :
             return 0; 
     }
