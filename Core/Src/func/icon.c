@@ -5,7 +5,7 @@ void print(_32bit *chessman, int a, int b, int k){
         control[i] = chessman[i];
     control[a] |= (0xC0000000 >> (b * 2));
     system("clear");
-    printf("┌─");
+    printf("\x1b[47m\x1b[32m┌─");
     for (int j = 0; j < 15; j++)
         printf("─┬─");
     printf("─┐\n");
@@ -15,11 +15,11 @@ void print(_32bit *chessman, int a, int b, int k){
             switch ((control[i] & (0xC0000000 >> (j * 2))) >> (30 - j * 2)){
             case 0: printf("─┼─");
                 break;
-            case 1: printf("─● ");
+            case 1: printf("─⚪");
                 break;
-            case 2: printf("─○ ");
+            case 2: printf("─⚫");
                 break;
-            case 3: printf("─¤─");
+            case 3: printf("─\x1b[35m¤\x1b[32m─");
                 break;
             }
         printf("─┤\n");
@@ -27,9 +27,9 @@ void print(_32bit *chessman, int a, int b, int k){
     free(control);
     printf("└─");
     for (int i = 0; i < 15; i++) printf("─┴─");
-    printf("─┘\n");
-    if (k == 1) printf("●'s turn\n");
-    else if (k == -1) printf("○'s turn\n");
+    printf("─┘\x1b[0m\n");
+    if (k == 1) printf("⚪'s turn\n");
+    else if (k == -1) printf("⚫'s turn\n");
 }
 void icon(_32bit *chessman){
     int ch, i = 7, j = 7, k = 1, a = 1;

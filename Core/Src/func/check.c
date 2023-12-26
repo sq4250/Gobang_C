@@ -47,19 +47,17 @@ int checkchess(_32bit *a, int c){
 }
 int check(_32bit *chessman){
     if(checkchess(chessman, 1) == 1){
-        printf("\n");
         printf("|          Winner:          |\n");
         printf("|                           |\n");    
-        printf("|             ●             |\n");
+        printf("|            ⚪             |\n");
         printf("|                           |\n");
         printf("|                           |\n");
         return 1;
     }
     else if(checkchess(chessman, 2) == 2){
-        printf("\n\n");
         printf("|          Winner:          |\n");
         printf("|                           |\n");
-        printf("|             ○             |\n");
+        printf("|            ⚫             |\n");
         printf("|                           |\n");
         printf("|                           |\n");
         return 2;
