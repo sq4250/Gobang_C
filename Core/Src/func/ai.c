@@ -46,9 +46,9 @@ int score(int a){
         case 0x2A2:
         case 0x28A:
         case 0x22A:
-            return 1000;
-        case 0x2AA:
             return 10000;
+        case 0x2AA:
+            return 1000000;
         case 0x100:
         case 0x40:
         case 0x10:
@@ -67,7 +67,7 @@ int score(int a){
         case 0x140:
             return -10;
         case 0x54:
-            return -200;
+            return -2000;
         case 0x114:
         case 0x144:
         case 0x150:
@@ -77,15 +77,15 @@ int score(int a){
         case 0x45:
         case 0x105:
         case 0x15:
-            return -100;
+            return -1000;
         case 0x154:
         case 0x55:
         case 0x151:
         case 0x145:
         case 0x115:
-            return -1000;
-        case 0x155:
             return -100000;
+        case 0x155:
+            return -10000000;
         default :
             return 0; 
     }
