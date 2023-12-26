@@ -37,7 +37,10 @@ void icon(_32bit *chessman){
         A:
         print(chessman, i, j, k);
         if (check(chessman)) break;
-        if (k == -1 && a == 1) k *= ai(chessman);
+        if (k == -1 && a == 1){
+            k *= ai(chessman);
+            goto A;    
+        }
         while (1){
             ch = getch();
             switch (ch){
