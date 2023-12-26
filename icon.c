@@ -28,8 +28,6 @@ void print(_32bit *chessman, int a, int b, int k){
     printf("└─");
     for (int i = 0; i < 15; i++) printf("─┴─");
     printf("─┘\n");
-    if (k == 1) printf("●'s turn\n");
-    else if (k == -1) printf("○'s turn\n");
 }
 void icon(_32bit *chessman){
     int ch, i = 7, j = 7, k = 1, a = 1;
@@ -37,6 +35,10 @@ void icon(_32bit *chessman){
         A:
         print(chessman, i, j, k);
         if (check(chessman)) break;
+        else{
+            if (k == 1) printf("●'s turn\n");
+            else if (k == -1) printf("○'s turn\n");
+        }
         if (k == -1 && a == 1) k *= ai(chessman);
         while (1){
             ch = getch();
