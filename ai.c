@@ -201,14 +201,8 @@ void find(NODE *node){
 }
 void free_tree(NODE *node){
     if (node != NULL){
-        if (node->child != NULL){
-            free_tree(node->child);
-            node->child = NULL;
-        }
-        if (node->sibling != NULL){
-            free_tree(node->sibling);
-            node->sibling = NULL;
-        }
+        free_tree(node->child);
+        free_tree(node->sibling);
         free(node);
     }
 }
