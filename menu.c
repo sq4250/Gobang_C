@@ -71,7 +71,8 @@ void menu(_32bit *chessman)
     switch (i){
     case 0:
         for (int j = 0; j < 16; j++)
-                chessman[j] = 0;
+            chessman[j] = 0;
+        chessman[7] = 0x00020000;
         break;
     case 1: break;
     case 2:
