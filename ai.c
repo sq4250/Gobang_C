@@ -90,7 +90,7 @@ int score(int a){
             return 0; 
     }
 }
-int add(NODE *node){
+int total(NODE *node){
     int m = 0;
     _32bit a = 0xC0000000, b = 0x3FF00000, s;
     for (int i = 0; i < 11; i++)
@@ -180,7 +180,7 @@ void parent(NODE *node){
 void evaluate(NODE *node){
     if (node != NULL){
         if (node->depth == DEPTH)
-            node->inf = node->sup = add(node);
+            node->inf = node->sup = total(node);
         evaluate(node->sibling);
         evaluate(node->child);
     }
